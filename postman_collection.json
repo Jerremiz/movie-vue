@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "b6f15b66-e901-4869-a46d-23ce0106d14c",
+		"name": "电影",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35111824",
+		"_collection_link": "https://orange-equinox-614970-9489.postman.co/workspace/%E6%80%A7%E7%88%B1%E5%9C%B0%E7%89%A2-Workspace~dff6c5b4-89d9-4f14-8f51-b90bd37625ab/collection/43015356-b6f15b66-e901-4869-a46d-23ce0106d14c?action=share&source=collection_link&creator=35111824"
+	},
+	"item": [
+		{
+			"name": "周榜",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://mondaydb.top/movies/trending/week/1"
+			},
+			"response": [
+				{
+					"id": "950387",
+					"title": "A Minecraft Movie",
+					"rank": 1,
+					"posterPath": "/iPPTGh2OXuIv6d7cwuoPkw8govp.jpg"
+				},
+				{
+					"id": "574475",
+					"title": "Final Destination Bloodlines",
+					"rank": 2,
+					"posterPath": "/15oUaXHGHTBm9KLmeOwGTIFrc64.jpg"
+				}
+			]
+		},
+		{
+			"name": "电影信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "https://mondaydb.top/movies/more/1279596"
+			},
+			"response": [
+				{
+					"title": "Sinners",
+					"posterPath": "/fWPgbnt2LSqkQ6cdQc0SZN9CpLm.jpg",
+					"backdropPath": "/oUgVgGaNqV9Y0Zdyjc1kCpzIe4G.jpg",
+					"imdbRating": "N/A",
+					"imdbVotes": "N/A",
+					"budget": "90000000",
+					"boxOffice": "N/A",
+					"overview": "Trying to leave their troubled lives behind, twin brothers return to their hometown to start again, only to discover that an even greater evil is waiting to welcome them back.",
+					"releaseDate": "2025-04-16"
+				}
+			]
+		},
+		{
+			"name": "用户注册",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"modkk\",\r\n    \"password\":\"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://mondaydb.top/users/register"
+			},
+			"response": [
+				{
+					"uid": 12,
+					"name": "modssskk",
+					"password": "$2a$10$CR19JfMCMBw.ncyYkAuJlOy24NkrrHDw2YWVAaUAGRfAqr/yRleBK",
+					"role": "USER",
+					"avatarUrl": null,
+					"posterUrl": null
+				}
+			]
+		},
+		{
+			"name": "获取更新榜单",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "https://mondaydb.top/movies/fetch-all"
+			},
+			"response": []
+		},
+		{
+			"name": "日榜",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://mondaydb.top/movies/trending/day/1"
+			},
+			"response": [
+				{
+					"id": "950387",
+					"title": "A Minecraft Movie",
+					"rank": 1,
+					"posterPath": "/iPPTGh2OXuIv6d7cwuoPkw8govp.jpg"
+				},
+				{
+					"id": "1197306",
+					"title": "A Working Man",
+					"rank": 2,
+					"posterPath": "/6FRFIogh3zFnVWn7Z6zcYnIbRcX.jpg"
+				}
+			]
+		},
+		{
+			"name": "添加影单",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MSIsImlhdCI6MTc0NDg3Njc2OCwiZXhwIjoxNzQ0OTYzMTY4fQ.EemGe6aPnUvaVNO61qXrcANkJHTU6m9jpfqsk5EqZDo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost/movieList/add?userId=7&movieId=19912",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movieList",
+						"add"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "7"
+						},
+						{
+							"key": "movieId",
+							"value": "19912"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除影单",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost/movieList/delete?userId=1&movieId=1279596",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"movieList",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						},
+						{
+							"key": "movieId",
+							"value": "1279596"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取影单",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mondaydb.top/movieList/getList?userId=5",
+					"protocol": "https",
+					"host": [
+						"mondaydb",
+						"top"
+					],
+					"path": [
+						"movieList",
+						"getList"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"title": "Warfare",
+					"posterPath": "/oXsDTDt1MqxJreROd2cbd2FMOZ2.jpg",
+					"overview": "A platoon of Navy SEALs embarks on a dangerous mission in Ramadi, Iraq, with the chaos and brotherhood of war retold through their memories of the event.",
+					"releaseDate": "2025-04-10",
+					"movieId": "1241436"
+				},
+				{
+					"title": "The Final Destination",
+					"posterPath": "/5vxXrr1MqGsT4NNeRITpfDnl4Rq.jpg",
+					"overview": "A horrifying premonition saves a young man and his friends from death during a racetrack accident but terrible fates await them nonetheless.",
+					"releaseDate": "2009-08-26",
+					"movieId": "19912"
+				}
+			]
+		},
+		{
+			"name": "登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "monday",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://mondaydb.top/auth/login"
+			},
+			"response": [
+				{
+					"user": {
+							"username": "mo123",
+							"avatarUrl": "/images/1a/63/1a633b6fc7584ad5bac61c6cdcae5300.jpg",
+							"posterUrl": null,
+							"id": 5
+					},
+					"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtbzEyMyIsImlhdCI6MTc0NzQ1ODI1NiwiZXhwIjoxNzQ3NTQ0NjU2fQ.-rqwrHIumg8eouNmgHWb6_o-QuUY7CnM8xP6ki5-2Vk"
+				}
+			]
+		},
+		{
+			"name": "搜索",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "查询e's",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "删除e's",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "0cTG_tyVvdQ6pZgsLtN0",
+						"username": "elastic"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": {\r\n    \"match_all\": {}\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://mondaydb.top/movies/_delete_by_query"
+			},
+			"response": []
+		},
+		{
+			"name": "写评论",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzQ1MzkyOTI3LCJleHAiOjE3NDU0NzkzMjd9._tOZxliQE9sdhdM-5pJ4UvlrA6WV5KTyk1KLeIFWKjs"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": 6,\r\n  \"movieId\": \"1233413\",\r\n  \"comment\": \"这部电影真的太棒了！\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mondaydb.top/comments/add?userId=6",
+					"protocol": "https",
+					"host": [
+						"mondaydb",
+						"top"
+					],
+					"path": [
+						"comments",
+						"add"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "电影评论",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://mondaydb.top/comments/movie/986056"
+			},
+			"response": [
+				{
+					"title": "Thunderbolts*",
+					"userName": "mo123",
+					"createdAt": "2025-05-06T07:28:06.799+00:00",
+					"comment": "tr",
+					"userId": 5,
+					"movieId": "986056"
+				},
+				{
+					"title": "Thunderbolts*",
+					"userName": "mo123",
+					"createdAt": "2025-05-06T07:28:10.553+00:00",
+					"comment": "tr",
+					"userId": 5,
+					"movieId": "986056"
+				}
+			]
+		},
+		{
+			"name": "用户评论",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://mondaydb.top/comments/users/3"
+			},
+			"response": [
+				[
+					{
+							"title": "Sinners",
+							"userName": "mo123",
+							"createdAt": "2025-04-27T03:40:27.249+00:00",
+							"comment": "ty",
+							"userId": 5,
+							"movieId": "1233413"
+					},
+					{
+							"title": "Sinners",
+							"userName": "mo123",
+							"createdAt": "2025-04-27T12:57:00.363+00:00",
+							"comment": "ty",
+							"userId": 5,
+							"movieId": "1233413"
+					}
+				]
+			]
+		},
+		{
+			"name": "删评论",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2RrazEiLCJpYXQiOjE3NDUzOTM5MzcsImV4cCI6MTc0NTQ4MDMzN30.phUrd-6kXA3XNTpAljPjLzKpjuFmVlndS97JWROReLE"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://mondaydb.top/comments/delete?userId=3&commentId=1",
+					"protocol": "https",
+					"host": [
+						"mondaydb",
+						"top"
+					],
+					"path": [
+						"comments",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "3"
+						},
+						{
+							"key": "commentId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上传头像",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtbzEyMyIsImlhdCI6MTc0NjQ1OTc2OSwiZXhwIjoxNzQ2NTQ2MTY5fQ._otOtewSoxecdvY_ljX3xLJC2rVozpnVwhOpmvf7zqI"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/周一的伊丽莎白/Pictures/v2-8cbdc591751b2cd95509e0afaf3b4b59_r.jpg"
+						},
+						{
+							"key": "userId",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://mondaydb.top/users/upload/avatar"
+			},
+			"response": []
+		},
+		{
+			"name": "获取头像",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://www.mondaydb.top/images/bf/af/bfaf5ec8daa04a8d95e36a7739d40346.jpg"
+			},
+			"response": []
+		},
+		{
+			"name": "单个用户信息",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.mondaydb.top/users/get?userId=5",
+					"protocol": "https",
+					"host": [
+						"mondaydb",
+						"top"
+					],
+					"path": [
+						"users",
+						"get"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"username": "mo123",
+					"avatarUrl": "/images/bf/af/bfaf5ec8daa04a8d95e36a7739d40346.jpg",
+					"posterUrl": null,
+					"id": null
+				}
+			]
+		}
+	]
+}
