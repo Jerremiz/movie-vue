@@ -80,12 +80,6 @@ const comments = ref([]);
 const avatarUrl = computed(() => {
   if (!user.value.avatarUrl) return '';
 
-  // 如果已经是完整URL，直接返回
-  if (user.value.avatarUrl.startsWith('http')) {
-    return user.value.avatarUrl;
-  }
-
-  // 否则拼接API地址
   return `https://mondaydb.top${user.value.avatarUrl}`;
 });
 
@@ -115,10 +109,15 @@ const beforeAvatarUpload = (file) => {
 // 上传头像
 const uploadAvatar = async (options) => {
   try {
-    const response = await userApi.uploadAvatar(user.value.id, options.file);
+    // 上传头像
+    await userApi.uploadAvatar(user.value.id, options.file);
+
+    // 重新获取用户信息
+    const userInfoResponse = await userApi.getUserInfo(user.value.id);
+    const updatedUser = userInfoResponse.data;
 
     // 更新头像
-    authStore.updateUserAvatar(response.data.avatarUrl);
+    authStore.updateUserAvatar(updatedUser.avatarUrl);
 
     ElMessage.success('头像上传成功');
   } catch (error) {
