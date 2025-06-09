@@ -7,7 +7,7 @@
       <div v-for="comment in comments" :key="comment.createdAt" class="comment-item">
         <div class="comment-header">
           <div class="user-info">
-            <el-avatar size="small">{{ getInitials(comment.userName) }}</el-avatar>
+            <el-avatar size="small" :src="avatarUrls[comment.userId] || ''" />
             <span class="username">{{ comment.userName }}</span>
           </div>
           <div class="comment-date">{{ formatDate(comment.createdAt) }}</div>
@@ -44,6 +44,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useAuthStore } from '@/stores/auth';
+import { userApi } from '@/services/api';
 import { useCommentStore } from '@/stores/comment';
 import { ElMessage, ElMessageBox } from 'element-plus';
 
@@ -58,13 +59,18 @@ const authStore = useAuthStore();
 const commentStore = useCommentStore();
 const newComment = ref('');
 const submitting = ref(false);
+const avatarUrls = ref({}); // 存储用户头像URL的映射
 
 // 检查用户是否已登录
 const isAuthenticated = computed(() => authStore.isAuthenticated);
 
-// 获取用户名首字母
-const getInitials = (username) => {
-  return username ? username.charAt(0).toUpperCase() : '?';
+// 加载用户头像
+const loadUserAvatar = async (userId) => {
+  const userInfoResponse = await userApi.getUserInfo(userId);
+  const userData = userInfoResponse.data;
+  avatarUrls.value[userId] = userData.avatarUrl 
+    ? `https://mondaydb.top${userData.avatarUrl}` 
+    : '';
 };
 
 // 格式化日期
@@ -144,6 +150,12 @@ const comments = computed(() => commentStore.movieComments);
 const fetchMovieComments = async () => {
   try {
     await commentStore.fetchMovieComments(props.movieId);
+    
+    // 获取评论后加载所有用户的头像
+    const uniqueUserIds = [...new Set(commentStore.movieComments.map(comment => comment.userId))];
+    for (const userId of uniqueUserIds) {
+      await loadUserAvatar(userId);
+    }
   } catch (error) {
     console.error('获取评论失败:', error);
   }
