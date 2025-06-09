@@ -1,41 +1,68 @@
-# movie
+# 📋 项目简介
 
-This template should help get you started developing with Vue 3 in Vite.
+一个使用 Vue3 构建的现代电影信息浏览和收藏 Web 应用。
 
-## Recommended IDE Setup
+## ✨ 功能特性
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- 🎬 浏览热门电影（日榜/周榜）
+- ⭐ 个人影单收藏功能（添加、删除、查询）
+- 💬 电影评论系统（添加、删除、查询）
+- 👤 用户注册、登录和个人资料管理
+- 📱 响应式设计，支持移动设备
 
-## Customize configuration
+## ⚙️ 技术栈
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **前端框架**: Vue3
+- **构建工具**: Vite
+- **UI组件**: Element Plus
+- **状态管理**: Pinia
+- **HTTP客户端**: Axios
+- **测试工具**: Vitest
 
-## Project Setup
+## 🔧 安装
 
-```sh
-yarn
+### 环境要求
+
+- Node.js
+- yarn
+
+### 安装步骤
+
+1. 克隆仓库
+```bash
+git clone https://github.com/Jerremiz/movie-vue.git
+cd movie-vue
 ```
 
-### Compile and Hot-Reload for Development
+2. 安装依赖
+```bash
+yarn install
+```
 
-```sh
+3. 启动开发服务器
+```bash
 yarn dev
 ```
 
-### Compile and Minify for Production
-
-```sh
+4. 构建
+```bash
 yarn build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## 📝 API说明
 
-```sh
-yarn test:unit
-```
+本项目使用`https://mondaydb.top`作为后端API，主要功能包括：
 
-### Lint with [ESLint](https://eslint.org/)
+- `/` - 首页
+- `/login` - 登录页面
+- `/register` - 注册页面
+- `/trending/week` - 本周热门电影
+- `/trending/day` - 今日热门电影
+- `/movie/:id` - 电影详情页
+- `/movie-list` - 我的影单
+- `/profile` - 个人资料
+- `/search` - 电影搜索
 
-```sh
-yarn lint
-```
+## 📄 许可证
+
+- [GNU General Public License v3.0](LICENSE)
